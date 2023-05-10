@@ -8,14 +8,14 @@
         general:
             svo_file: "" # usually overwritten by launch file
             svo_loop: false # Enable loop mode when using an SVO as input source
-            svo_realtime: true # if true SVO will be played trying to respect the original framerate eventually skipping frames, otherwise every frame will be processed respecting the `pub_frame_rate` setting
+            svo_realtime: false # if true SVO will be played trying to respect the original framerate eventually skipping frames, otherwise every frame will be processed respecting the `pub_frame_rate` setting
             camera_timeout_sec: 5
             camera_max_reconnect: 5
             camera_flip: false
             zed_id: 0 # usually overwritten by launch file
             serial_number: 0 # usually overwritten by launch file
-            grab_resolution: 'HD720' # The native camera grab resolution. 'HD2K', 'HD1080', 'HD720', 'VGA'
-            pub_resolution: 'MEDIUM' # The resolution used for output. 'HD2K', 'HD1080', 'HD720', 'MEDIUM', 'VGA', 'LOW'
+            grab_resolution: 'HD1080' # The native camera grab resolution. 'HD2K', 'HD1080', 'HD720', 'VGA'
+            pub_resolution: 'HD1080' # The resolution used for output. 'HD2K', 'HD1080', 'HD720', 'MEDIUM', 'VGA', 'LOW'
             sdk_verbose: 1
             grab_frame_rate: 15 # ZED SDK internal grabbing rate
             pub_frame_rate: 15.0 # [DYNAMIC] - frequency of publishing of visual images and depth images
@@ -44,7 +44,7 @@
             qos_durability: 2 # '1': TRANSIENT_LOCAL - '2': VOLATILE
 
         depth:
-            quality: 1 # '0': NONE, '1': PERFORMANCE, '2': QUALITY, '3': ULTRA - '4': NEURAL - Note: if '0' all the modules that requires depth extraction are disabled by default (Pos. Tracking, Obj. Detection, Mapping, ...)
+            quality: 0 # '0': NONE, '1': PERFORMANCE, '2': QUALITY, '3': ULTRA - '4': NEURAL - Note: if '0' all the modules that requires depth extraction are disabled by default (Pos. Tracking, Obj. Detection, Mapping, ...)
             sensing_mode: 0 # '0': STANDARD, '1': FILL
             depth_stabilization: true # Forces positional tracking to start if 'true'
             openni_depth_mode: false # 'false': 32bit float [meters], 'true': 16bit unsigned int [millimeters]
@@ -58,7 +58,7 @@
             qos_durability: 2 # '1': TRANSIENT_LOCAL - '2': VOLATILE
 
         pos_tracking:
-            pos_tracking_enabled: true # True to enable positional tracking from start
+            pos_tracking_enabled: false # True to enable positional tracking from start
             imu_fusion: true # enable/disable IMU fusion. When set to false, only the optical odometry will be used.
             publish_tf: true # [usually overwritten by launch file] publish `odom -> base_link` TF
             publish_map_tf: true # [usually overwritten by launch file] publish `map -> odom` TF
